@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Aumento Salarial</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+    <style>
+        input {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cálculo de Aumento Salarial</h1>
+    <p>Por favor, informe o salário atual:</p>
+    <input type="number" id="salarioAtual" required>
+    <button class="btn btn-primary btn-block" onclick="calcularAumento()">Calcular Aumento</button>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" style="padding: 2rem 3rem;">
+                Aqui será exibido o valor original e o valor com aumento
+            </div>
+        </div>
+    </section>
+    <script>
+        function calcularAumento() {
+            const salarioAtual = parseFloat(document.getElementById('salarioAtual').value);
+            const resultadoContainer = document.getElementById('resultado');
+            
+            let novoSalario = salarioAtual;
+            if (salarioAtual <= 2000) {
+                novoSalario += salarioAtual * 0.10;
+            } else if (salarioAtual > 5000 && salarioAtual < 10000) {
+                novoSalario += salarioAtual * 0.05;
+            } else if (salarioAtual >= 10000 && salarioAtual < 15000) {
+                novoSalario += salarioAtual * 0.02;
+            }
+
+            resultadoContainer.textContent = `Salário original: R$ ${salarioAtual.toFixed(2)}, Salário com aumento: R$ ${novoSalario.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

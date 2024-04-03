@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Impressão de Números de 1 a 10</title>
+</head>
+
+<body>
+    <h1>Impressão de Números de 1 a 10</h1>
+    <p id="resultado"></p>
+</body>
+<script>
+    function imprimirNumeros() {
+        let string_numeros = "";
+        for (let i = 1; i <= 10; i++) {
+            string_numeros += i + " ";
+        }
+        document.getElementById('resultado').textContent = string_numeros;
+    }
+
+    // Chama a função assim que o documento é carregado
+    document.addEventListener('DOMContentLoaded', imprimirNumeros);
+</script>
+
+</html>

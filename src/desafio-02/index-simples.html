@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Prioridade em Atendimento</title>
+<link rel="stylesheet" href="/common/css/style.css" />
+</head>
+
+<body>
+    <h1>Verificação de Prioridade em Atendimento</h1>
+    <p>Por favor, informe sua idade:</p>
+    <input type="number" id="idade" min="0">
+    <button onclick="verificarPrioridade()">Verificar Prioridade</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function verificarPrioridade() {
+        const idade = document.getElementById('idade').value;
+        const resultado = document.getElementById('resultado');
+
+        if (idade >= 60) {
+            resultado.textContent = "Aguarde na fila de prioridade.";
+        } else {
+            resultado.textContent = "Aguarde na fila normal.";
+        }
+    }
+</script>

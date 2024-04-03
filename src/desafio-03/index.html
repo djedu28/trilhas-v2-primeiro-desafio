@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Nota do Aluno</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+</head>
+
+<body>
+    <div class="terminal-alert terminal-alert-primary">
+        <legend>DESAFIO 1 - PROBLEMÁTICA 3</legend>
+        <p>
+            A professora Sandra pretende automatizar o resultado da nota de um aluno de ensino médio e solicitou-lhe que crie um
+            programa que receba três notas finais e que apareça para ela “Aprovado”, se a média estiver entre 7 e 10. Caso a média
+            for menor que 7 e maior ou igual a 0, o programa deve imprimir na tela “Reprovado”.
+        </p>
+    </div>
+    <h1>Verificação de Nota do Aluno</h1>
+    <fieldset>
+        <legend>Por favor, informe as três notas finais:</legend>
+            
+        <div style="display: flex; gap: 21px;justify-content: space-between;">
+            <div class="form-group">
+                <label for="nota1">Nota1</label>
+                <input type="number" id="nota1" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="nota2">Nota2</label>
+                <input type="number" id="nota2" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="nota3">Nota3</label>
+                <input type="number" id="nota3" min="0" max="10" required>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="verificarNota()">Verificar Nota</button>
+    </fieldset>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" class="">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+                ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+                incidunt. Eaque quod et, aut maiores excepturi sint.
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    function verificarNota() {
+        // coletando valores das notas
+        const nota1 = parseFloat(document.getElementById('nota1').value);
+        const nota2 = parseFloat(document.getElementById('nota2').value);
+        const nota3 = parseFloat(document.getElementById('nota3').value);
+        // capturando elemento para saida das informações
+        const resultado = document.getElementById('resultado');
+        // calculando a media das notas
+        const media = (nota1 + nota2 + nota3) / 3;
+        // validando a media das notas
+        if (![nota1, nota2, nota3].every(nota=> nota>=0 && nota<=10)){
+            resultado.textContent = "Nota inválida";
+        } else if (media >= 7 && media <= 10) {
+            resultado.textContent = "Aprovado";
+            resultado.classList = ["terminal-alert-primary"];
+        } else if (media >= 0 && media < 7) {
+            resultado.textContent = "Reprovado";
+            resultado.classList = ["terminal-alert-error"];
+        }
+    }
+</script>
+
+</html>

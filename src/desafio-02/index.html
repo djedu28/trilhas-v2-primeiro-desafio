@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Prioridade em Atendimento</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <div class="terminal-alert terminal-alert-primary">
+        <legend>DESAFIO 1 - PROBLEMÁTICA 2</legend>
+        <p>
+            Suponha que você trabalha em um centro de atendimento e foi solicitado um programa que peça ao usuário que informe a
+            sua idade e, em seguida, verificar se ele é um adulto ou idoso, para gerar a prioridade em atendimento. Crie um programa
+            que se a pessoas tiver 60 anos ou mais imprima na tela “Aguarde na fila de prioridade”, caso contrário “Aguarde na fila
+            normal”.
+        </p>
+    </div>
+    <h1>Verificação de Prioridade em Atendimento</h1>
+    <fieldset>
+        <legend>Informe o que se pede abaixo</legend>
+        <div class="form-group">
+            <label for="idade">Por favor, informe sua idade:</label>
+            <input type="number" id="idade" min="0">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="verificarPrioridade()">Verificar Prioridade</button>
+    </fieldset>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+                ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+                incidunt. Eaque quod et, aut maiores excepturi sint.
+            </div>
+        </div>
+    </section>
+</body>
+<!-- <script src="script.js"></script> -->
+<script>
+    function verificarPrioridade() {
+        const idade = document.getElementById('idade').value;
+        const resultado = document.getElementById('resultado');
+
+        if (idade >= 60) {
+            resultado.textContent = "Aguarde na fila de prioridade.";
+        } else {
+            resultado.textContent = "Aguarde na fila normal.";
+        }
+    }
+</script>
+
+</html>

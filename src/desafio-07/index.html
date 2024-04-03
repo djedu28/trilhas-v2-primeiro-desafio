@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Divisibilidade</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+    <style>
+        input {
+            text-align: center;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 21px;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Verificação de Divisibilidade</h1>
+    <fieldset>
+        <div class="input-container">
+            <div class="form-group">
+                <label for="numero1">Primeiro Número</label>
+                <input type="number" id="numero1" required>
+            </div>
+            <div style="font-size: xx-large;">
+                ÷
+            </div>
+            <div class="form-group">
+                <label for="numero2">Segundo Número</label>
+                <input type="number" id="numero2" required>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="verificarDivisibilidade()">
+            Verificar Divisibilidade
+        </button>
+    </fieldset>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" style="padding: 2rem 3rem;">
+                Aqui será exibido o resultado da verificação de divisibilidade
+            </div>
+        </div>
+    </section>
+    <script>
+        function verificarDivisibilidade() {
+            const numero1 = parseFloat(document.getElementById('numero1').value);
+            const numero2 = parseFloat(document.getElementById('numero2').value);
+            const resultadoContainer = document.getElementById('resultado');
+
+            if (Number.isNaN(numero1) || Number.isNaN(numero2)) {
+                resultado_container.textContent = `Valor inválido`;
+                return;
+            }
+            if (numero2 === 0) {
+                resultadoContainer.textContent = `Valor inválido: o segundo número não pode ser zero.`;
+                return;
+            }
+
+            if (numero1 % numero2 === 0) {
+                resultadoContainer.textContent = `O primeiro número é divisível pelo segundo.`;
+            } else {
+                resultadoContainer.textContent = `O primeiro número não é divisível pelo segundo. (o resto da divisão é diferente de zero).`;
+            }
+            resultadoContainer.textContent += ` \n Resultado da divisão: ${numero1 / numero2}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+/* autoria @DjEdu28 */
+/* CSS ajustado para utilizar o terminalcss.xyz com correções feitas por @DjEdu28 */
+
+@import url(https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css);
+@import url(./dark.css);
+
+body {
+    max-width: 90vw;
+    width: 800px;
+    margin: 0 auto;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+h1, h2, button {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+select {
+    width: 100%;
+    padding: 10px;
+}
+p {
+    text-align: justify;
+}
+
+/* input[type="date"] {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+} */
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container span {
+    margin: 0 10px;
+}
+
+.input-container input {
+    flex: 1;
+    text-align: center;
+}
+
+.terminal-card>header{
+    background-color: var(--primary-color);
+    /* background-color: var(--tertiary-color); */
+}

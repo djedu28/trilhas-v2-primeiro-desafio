@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Salário Total</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+</head>
+
+<body>
+    <h1>Cálculo de Salário Total</h1>
+    <p>Por favor, informe os salários separados por vírgula e utilizando ponto (.) como separador de cacas decimais:</p>
+    <input type="text" id="salarios" required placeholder="10, 7, 20, -30">
+    <button class="btn btn-primary btn-block" onclick="calcularSalarioTotal()">Calcular Salário Total</button>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" style="padding:2rem">
+                Aqui será exibido o salário total da folha de pagamento
+            </div>
+        </div>
+    </section>
+    <script>
+        function calcularSalarioTotal() {
+            const salariosString = document.getElementById('salarios').value;
+            const salarios = salariosString.split(',').map(salario => parseFloat(salario.trim()));
+            const resultadoContainer = document.getElementById('resultado');
+
+            const salarioTotal = salarios.reduce((total, salario) => total + salario, 0);
+
+            if (Number.isNaN(salarioTotal)){
+                resultadoContainer.classList = ["btn-error"]
+                resultadoContainer.innerHTML = `
+                    <p>Erro, favor informe somente números, separados por virgula.</p>
+                    <p>É aceito sinal de negativo "-"</p>
+                    <p>Exemplo: 10, 7, 20, -30</p>
+                `;
+                return;
+            }
+            const salario_em_brl = "R$ "+salarioTotal.toFixed(2).replace(".", ",")
+            resultadoContainer.classList = []
+            resultadoContainer.innerHTML  = `<p> O salário total da folha de pagamento é: <b>${salario_em_brl}</b></p>`;
+            resultadoContainer.innerHTML += `<p> Calculo: ${salarios.join(" + ")} = ${salario_em_brl} </p>`;
+        }
+    </script>
+</body>
+
+</html>

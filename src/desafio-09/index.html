@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Idade</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+    <style>
+        input { text-align: center; }
+    </style>
+</head>
+
+<body>
+    <h1>Cálculo de Idade</h1>
+    <p>Por favor, informe o ano de nascimento:</p>
+    <div class="form-group">
+        <label for="anoNascimento">Qual o ano do seu nascimento?</label>
+        <input type="number" id="anoNascimento" required placeholder="1998" oninput="calcularIdade()">
+    </div>
+    <button class="btn btn-primary btn-block" onclick="calcularIdade()">Calcular Idade</button>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" style="padding: 2rem">
+                Aqui será exibida a idade da pessoa
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    function calcularIdade() {
+        const anoNascimento = document.getElementById('anoNascimento').value;
+        const resultadoContainer = document.getElementById('resultado');
+
+        const anoAtual = new Date().getFullYear();
+        const idade = anoAtual - parseInt(anoNascimento);
+
+        if (Number.isNaN(idade)) {
+            resultadoContainer.textContent = `Verifique o ano de nascimento, ele precisa ser um numero`;
+            return;
+        }
+        if (anoNascimento.length <= 3) {
+            resultadoContainer.textContent = `Aqui será exibida a idade da pessoa, quando inserir um ano realista`
+            return;
+        }
+        if (idade < 0) {
+            resultadoContainer.textContent = `Verifique o ano de nascimento, ele não pode ser no futuro`;
+            return;
+        }
+
+        resultadoContainer.textContent = `A idade da pessoa é: ${idade} anos e alguns meses`;
+    }
+</script>
+
+</html>

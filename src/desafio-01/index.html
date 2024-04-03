@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Boas-vindas à Empresa Trilhas Inova</title>
+</head>
+
+<body>
+    <h1>Boas-vindas à Empresa Trilhas Inova</h1>
+    <button onclick="solicitarNome()">Clique aqui para ser bem-vindo(a)</button>
+    <h2 id="msg" style="border: 1px solid orange; padding: 20px;"></h2>
+    <!-- <script src="script.js"></script> -->
+</body>
+
+<script>
+    function solicitarNome() {
+        // Solicita o nome do visitante
+        let nome = prompt("Por favor, digite seu nome:");
+        if (nome === null) {
+            //break out of the function early
+            return; 
+        }
+        // Verifica se o nome foi fornecido
+        if (nome) {
+            // Exibe a mensagem de boas-vindas personalizada
+            printMsg(`Olá, ${nome}, seja bem-vindo(a) à nossa empresa.`);
+        } else {
+            // Exibe uma mensagem de erro caso o nome não seja fornecido
+            printMsg("Desculpe, nenhum nome fornecido!");
+        }
+    }
+    function printMsg(text) {
+        // captura o elemento h2 pela id "msg"
+        const msg = document.getElementById('msg');
+        // substitui o corpo do elemento pelo texto da mensagem
+        msg.textContent = text
+        // emite um alerta com o texto da menssagem
+        alert(text)
+    }
+</script>
+
+</html>

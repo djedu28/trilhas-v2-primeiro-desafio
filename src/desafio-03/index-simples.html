@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Nota do Aluno</title>
+    <!-- <link rel="stylesheet" href="/common/css/style.css" /> -->
+</head>
+
+<body>
+    <h1>Verificação de Nota do Aluno</h1>
+    <p>Por favor, informe as três notas finais:</p>
+    <input type="number" id="nota1" min="0" max="10">
+    <input type="number" id="nota2" min="0" max="10">
+    <input type="number" id="nota3" min="0" max="10">
+    <button onclick="verificarNota()">Verificar Nota</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function verificarNota() {
+        // coletando valores das notas
+        const nota1 = parseFloat(document.getElementById('nota1').value);
+        const nota2 = parseFloat(document.getElementById('nota2').value);
+        const nota3 = parseFloat(document.getElementById('nota3').value);
+        // capturando elemento para saida das informações
+        const resultado = document.getElementById('resultado');
+        // calculando a media das notas
+        const media = (nota1 + nota2 + nota3) / 3;
+        // validando a media das notas
+        if (media >= 7 && media <= 10) {
+            resultado.textContent = "Aprovado";
+        } else if (media >= 0 && media < 7) {
+            resultado.textContent = "Reprovado";
+        } else {
+            resultado.textContent = "Nota inválida";
+        }
+    }
+</script>
+</html>

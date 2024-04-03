@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Aumento Salarial</title>
+    <link rel="stylesheet" href="/common/css/style.css" />
+    <style>
+        input {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cálculo de Aumento Salarial</h1>
+    <p>Por favor, informe o salário atual:</p>
+    <input type="number" id="salarioAtual" required step="0.01">
+    <button class="btn btn-primary btn-block" onclick="calcularAumento()">Calcular Aumento</button>
+    <ul>
+        Algoritmo que acrescente:
+        <li>10%, se o salário for menor ou igual a R$ 2000;</li>
+        <li>5%, se for maior a R$ 5000 e menor que R$ 10000;</li>
+        <li>2%, se for maior que R$10000 e menor que R$15000.</li>
+    </ul>
+    <section>
+        <div class="terminal-card" id="card">
+            <header>Resultado</header>
+            <div id="resultado" style="padding: 2rem 3rem;">
+                Aqui será exibido o valor original e o valor com aumento
+            </div>
+        </div>
+    </section>
+    <script>
+
+        function print(...array_msgs){
+            const resultadoContainer = document.getElementById('resultado');
+            resultadoContainer.innerHTML = array_msgs.map(texto => `<p>${texto}</p>`).join("");
+        }
+        function calcularAumento() {
+            const salarioAtual = parseFloat(document.getElementById('salarioAtual').value);
+
+            if (Number.isNaN(salarioAtual)) {
+                resultadoContainer.textContent = `Salario não valido`;
+                return;
+            }
+            let justificativa = "Justificativa: "
+            let novoSalario = salarioAtual;
+            if (salarioAtual <= 2000) {
+                novoSalario += salarioAtual * 0.10;
+                justificativa += "Acrescentado 10%, pois o salário é menor ou igual a R$ 2000;"
+            } else if (salarioAtual > 5000 && salarioAtual < 10000) {
+                novoSalario += salarioAtual * 0.05;
+                justificativa += "Acrescentado 5%, pois o salario é maior a R$ 5000 e menor que R$ 10000;"
+            } else if (salarioAtual >= 10000 && salarioAtual < 15000) {
+                novoSalario += salarioAtual * 0.02;
+                justificativa += "Acrescentado 2%, pois o salário é maior que R$10000 e menor que R$15000;"
+            } else {
+                justificativa = "Infelizmente o salario não atendeu os critérios, não terá aumento"
+            }
+            
+            print(
+                `Salário original: R$ ${salarioAtual.toLocaleString()}`,
+                `Salário com aumento: R$ ${novoSalario.toLocaleString()}`,
+                justificativa
+            )
+            
+        }
+    </script>
+</body>
+
+</html>
