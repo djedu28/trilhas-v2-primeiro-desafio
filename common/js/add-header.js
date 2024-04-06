@@ -1,8 +1,20 @@
 let conteudo_navbar = `
+<style>
+    @import url(https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css);
+
+    .terminal-nav {
+        display: flex;
+        flex-direction: column;
+        align-content: left;
+    }
+</style>
 <div class="container">
+    <!-- <link rel="stylesheet" href="/common/css/style.css" /> -->
     <div class="terminal-nav">
         <header class="terminal-logo">
-            <div class="logo terminal-prompt"><a href="/" class="no-style">Desafio 1 TrilhasV2 por @DjEdu28</a></div>
+            <div class="logo terminal-prompt">
+                <a href="/" class="no-style">Desafio 1 TrilhasV2 por @DjEdu28</a>
+            </div>
         </header>
         <nav class="terminal-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
@@ -32,10 +44,10 @@ let conteudo_navbar = `
 </div>
 ` 
 
-conteudo_navbar = `
+// conteudo_navbar = `
 
-<iframe src="/common/header.html" style="width: 100%; border: none; padding: 0; margin: 0; top: 0; left: 0; right: 0;"></iframe>
-` 
+// <iframe src="/common/header.html" style="width: 100%; border: none; padding: 0; margin: 0; top: 0; left: 0; right: 0;"></iframe>
+// ` 
 
 function criar_navbar() {
     let navbar = document.createElement("div");
@@ -43,6 +55,14 @@ function criar_navbar() {
     // document.head.appendChild(navbar)
     document.body.insertBefore(navbar, document.body.firstChild);
 }
+
+function criar_navbar_load() {
+    if (document.readyState === "loading")
+        document.addEventListener("DOMContentLoaded", criar_navbar_load);
+    else
+        criar_navbar();
+}
+document.addEventListener("DOMContentLoaded", criar_navbar_load);
 
 // // adiciona o header ao carregar
 // document.addEventListener("DOMContentLoaded", criar_navbar());
